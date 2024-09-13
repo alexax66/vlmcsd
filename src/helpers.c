@@ -313,11 +313,11 @@ void parseAddress(char *const addr, char** szHost, char** szPort)
 {
 	*szHost = addr;
 
-#	ifndef NO_SOCKETS
+#ifndef NO_SOCKETS
 	*szPort = (char*)defaultport;
-#	else // NO_SOCKETS
+#else // NO_SOCKETS
 	*szPort = "1688";
-#	endif // NO_SOCKETS
+#endif // NO_SOCKETS
 
 	char *lastcolon = strrchr(addr, ':');
 	char *firstcolon = strchr(addr, ':');
@@ -342,13 +342,13 @@ void parseAddress(char *const addr, char** szHost, char** szPort)
 // Initialize random generator (needs to be done in each thread)
 void randomNumberInit()
 {
-#	if _MSC_VER
+#if _MSC_VER
 	srand(GetTickCount());
-#	else
+#else
 	struct timeval tv;
 	gettimeofday(&tv, NULL);
 	srand((unsigned int)(tv.tv_sec ^ tv.tv_usec));
-#	endif
+#endif
 }
 
 
@@ -369,11 +369,11 @@ void* vlmcsd_malloc(size_t len)
 
 char* vlmcsd_strdup(const char* src)
 {
-#	if _MSC_VER
+#if _MSC_VER
 	char* dst = _strdup(src);
-#	else // !_MSC_VER
+#else // !_MSC_VER
 	char* dst = strdup(src);
-#	endif
+#endif
 
 	if (!dst) OutOfMemory();
 	return dst;
@@ -451,11 +451,11 @@ void getExeName()
 {
 	if (fn_exe != NULL) return;
 
-#	if (__GLIBC__ || __linux__) && defined(USE_AUXV)
+#if (__GLIBC__ || __linux__) && defined(USE_AUXV)
 
 	fn_exe = (char*)getauxval(AT_EXECFN);
 
-#	elif (__ANDROID__ && __ANDROID_API__ < 16) || (__UCLIBC__ && __UCLIBC_MAJOR__ < 1 && !defined(NO_PROCFS)) // Workaround for older uclibc
+#elif (__ANDROID__ && __ANDROID_API__ < 16) || (__UCLIBC__ && __UCLIBC_MAJOR__ < 1 && !defined(NO_PROCFS)) // Workaround for older uclibc
 
 	char temp[PATH_MAX + 1];
 
@@ -464,11 +464,11 @@ void getExeName()
 		fn_exe = vlmcsd_strdup(temp);
 	}
 
-#	elif (__linux__ || __CYGWIN__) && !defined(NO_PROCFS)
+#elif (__linux__ || __CYGWIN__) && !defined(NO_PROCFS)
 
 	fn_exe = realpath("/proc/self/exe", NULL);
 
-#	elif (__FreeBSD__ || __FreeBSD_kernel__)
+#elif (__FreeBSD__ || __FreeBSD_kernel__)
 
 	int mib[4];
 	mib[0] = CTL_KERN;
@@ -483,19 +483,19 @@ void getExeName()
 		fn_exe = vlmcsd_strdup(path);
 	}
 
-#	elif (__DragonFly__) && !defined(NO_PROCFS)
+#elif (__DragonFly__) && !defined(NO_PROCFS)
 
 	fn_exe = realpath("/proc/curproc/file", NULL);
 
-#	elif __NetBSD__ && !defined(NO_PROCFS)
+#elif __NetBSD__ && !defined(NO_PROCFS)
 
 	fn_exe = realpath("/proc/curproc/exe", NULL);
 
-#	elif __sun__
+#elif __sun__
 
 	fn_exe = getexecname();
 
-#	elif __APPLE__
+#elif __APPLE__
 
 	char path[PATH_MAX + 1];
 	uint32_t size = sizeof(path);
@@ -505,16 +505,16 @@ void getExeName()
 		fn_exe = vlmcsd_strdup(path);
 	}
 
-#	elif _WIN32
+#elif _WIN32
 
 	char path[512];
 	GetModuleFileName(GetModuleHandle(NULL), path, 512);
 	path[511] = 0;
 	fn_exe = vlmcsd_strdup(path);
 
-#	else
+#else
 	// Sorry no exe detection
-#	endif
+#endif
 }
 #endif // defined(DATA_FILE) && defined(NO_SIGHUP)
 
@@ -552,19 +552,19 @@ static void getDefaultDataFile()
 
 void loadKmsData()
 {
-#	ifndef NO_INTERNAL_DATA
+#ifndef NO_INTERNAL_DATA
 	KmsData = (PVlmcsdHeader_t)DefaultKmsData;
-#	endif // NO_INTERNAL_DATA
+#endif // NO_INTERNAL_DATA
 
-#	ifndef NO_EXTERNAL_DATA
+#ifndef NO_EXTERNAL_DATA
 	long size;
-#	ifndef NO_INTERNAL_DATA
+#ifndef NO_INTERNAL_DATA
 	size = (long)getDefaultKmsDataSize();
-#	endif // NO_INTERNAL_DATA
+#endif // NO_INTERNAL_DATA
 
-#	ifndef DATA_FILE
+#ifndef DATA_FILE
 	if (!fn_data) getDefaultDataFile();
-#	endif // DATA_FILE
+#endif // DATA_FILE
 
 	if (strcmp(fn_data, "-"))
 	{
@@ -572,9 +572,9 @@ void loadKmsData()
 
 		if (!file)
 		{
-#			ifndef NO_INTERNAL_DATA
+#ifndef NO_INTERNAL_DATA
 			if (ExplicitDataLoad)
-#			endif // NO_INTERNAL_DATA
+#endif // NO_INTERNAL_DATA
 			{
 				dataFileReadError();
 			}
@@ -592,18 +592,18 @@ void loadKmsData()
 			if ((long)bytesRead != size) dataFileReadError();
 			fclose(file);
 
-#			if !defined(NO_LOG) && !defined(NO_SOCKETS)
+#if !defined(NO_LOG) && !defined(NO_SOCKETS)
 			if (!InetdMode) logger("Read KMS data file version %u.%u %s\n", (unsigned int)LE16(KmsData->MajorVer), (unsigned int)LE16(KmsData->MinorVer), fn_data);
-#			endif // NO_LOG
+#endif // NO_LOG
 		}
 	}
 
 
-#	endif // NO_EXTERNAL_DATA
+#endif // NO_EXTERNAL_DATA
 
-#	ifndef UNSAFE_DATA_LOAD
+#ifndef UNSAFE_DATA_LOAD
 	if (((BYTE*)KmsData)[size - 1] != 0) dataFileFormatError();
-#	endif // UNSAFE_DATA_LOAD
+#endif // UNSAFE_DATA_LOAD
 
 	KmsData->MajorVer = LE16(KmsData->MajorVer);
 	KmsData->MinorVer = LE16(KmsData->MinorVer);
@@ -617,9 +617,9 @@ void loadKmsData()
 	for (i = 0; i < vlmcsd_countof(KmsData->Datapointers); i++)
 	{
 		KmsData->Datapointers[i].Pointer = (BYTE*)KmsData + LE64(KmsData->Datapointers[i].Offset);
-#		ifndef UNSAFE_DATA_LOAD
+#ifndef UNSAFE_DATA_LOAD
 		if ((BYTE*)KmsData->Datapointers[i].Pointer > (BYTE*)KmsData + size) dataFileFormatError();
-#		endif // UNSAFE_DATA_LOAD
+#endif // UNSAFE_DATA_LOAD
 	}
 
 	for (i = 0; i < KmsData->CsvlkCount; i++)
@@ -627,15 +627,15 @@ void loadKmsData()
 		PCsvlkData_t csvlkData = &KmsData->CsvlkData[i];
 		csvlkData->EPid = (char*)KmsData + LE64(csvlkData->EPidOffset);
 		csvlkData->ReleaseDate = LE64(csvlkData->ReleaseDate);
-#		ifndef UNSAFE_DATA_LOAD
+#ifndef UNSAFE_DATA_LOAD
 		if (csvlkData->EPid > (char*)KmsData + size) dataFileFormatError();
-#		endif // UNSAFE_DATA_LOAD
+#endif // UNSAFE_DATA_LOAD
 
-#		ifndef NO_RANDOM_EPID
+#ifndef NO_RANDOM_EPID
 		csvlkData->GroupId = LE32(csvlkData->GroupId);
 		csvlkData->MinKeyId = LE32(csvlkData->MinKeyId);
 		csvlkData->MaxKeyId = LE32(csvlkData->MaxKeyId);
-#		endif // NO_RANDOM_EPID
+#endif // NO_RANDOM_EPID
 	}
 
 	for (i = 0; i < (uint32_t)KmsData->HostBuildCount; i++)
@@ -646,33 +646,33 @@ void loadKmsData()
 		hostBuild->PlatformId = LE32(hostBuild->PlatformId);
 		hostBuild->ReleaseDate = LE64(hostBuild->ReleaseDate);
 		hostBuild->DisplayName = (char*)KmsData + LE64(hostBuild->DisplayNameOffset);
-#		ifndef UNSAFE_DATA_LOAD
+#ifndef UNSAFE_DATA_LOAD
 		if (hostBuild->DisplayName > (char*)KmsData + size) dataFileFormatError();
-#		endif // UNSAFE_DATA_LOAD
+#endif // UNSAFE_DATA_LOAD
 	}
 
 	const uint32_t totalItemCount = KmsData->AppItemCount + KmsData->KmsItemCount + KmsData->SkuItemCount;
 
-#	ifndef NO_EXTERNAL_DATA
+#ifndef NO_EXTERNAL_DATA
 	if (
 		memcmp(KmsData->Magic, "KMD", sizeof(KmsData->Magic)) ||
 		KmsData->MajorVer != 2
-#		ifndef UNSAFE_DATA_LOAD
+#ifndef UNSAFE_DATA_LOAD
 		||
 		sizeof(VlmcsdHeader_t) + totalItemCount * sizeof(VlmcsdData_t) >= ((uint64_t)size)
-#		endif //UNSAFE_DATA_LOAD
+#endif //UNSAFE_DATA_LOAD
 		)
 	{
 		dataFileFormatError();
 	}
-#	endif // NO_EXTERNAL_DATA
+#endif // NO_EXTERNAL_DATA
 
 	for (i = 0; i < totalItemCount; i++)
 	{
 		PVlmcsdData_t item = &KmsData->AppItemList[i];
 		item->Name = (char*)KmsData + LE64(item->NameOffset);
 
-#		ifndef UNSAFE_DATA_LOAD
+#ifndef UNSAFE_DATA_LOAD
 		if (
 			item->Name >= (char*)KmsData + (uint64_t)size ||
 			(KmsData->AppItemCount && item->AppIndex >= KmsData->AppItemCount) ||
@@ -681,7 +681,7 @@ void loadKmsData()
 		{
 			dataFileFormatError();
 		}
-#		endif // UNSAFE_DATA_LOAD
+#endif // UNSAFE_DATA_LOAD
 	}
 }
 
