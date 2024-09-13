@@ -537,7 +537,7 @@ static void getDefaultDataFile()
 
 	if (!fn_exe)
 	{
-		fn_data = (char*)"/etc/vlmcsd.kmd";
+		fn_data = (char*)"/usr/local/etc/vlmcsd.kmd";
 		return;
 	}
 
