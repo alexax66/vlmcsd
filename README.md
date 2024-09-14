@@ -23,7 +23,7 @@ sudo cp ./etc/vlmcsd /usr/local/etc/rc.d/vlmcsd
 ```sh
 sudo nano /usr/local/etc/vlmcsd.ini
 ```
-Edit some option (see man/vlmcsd.8 and comments in vlmcsd.ini) if you want customizing them.
+Edit some option (see man/vlmcsd.7 and comments in vlmcsd.ini) if you want customizing them.
 
 ## Starting
 ```sh
@@ -33,7 +33,9 @@ sudo service vlmcsd start
 * Checking
 ```sh
 vlmcs
-
+```
+If the vlmcsd daemon started successfully, you should see something like this
+```
 Connecting to 127.0.0.1:1688 ... successful
 Sending activation request (KMS V6) 1 of 1  -> 03612-00206-554-823349-03-1045-17763.0000-0382023 (3A1C049600B60076)
 
