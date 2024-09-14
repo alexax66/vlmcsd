@@ -19,18 +19,22 @@ sudo cp ./etc/vlmcsd /usr/local/etc/rc.d/vlmcsd
 ```
 
 ## Edit configuration options
+Edit some option (see man/vlmcsd.7 and comments in vlmcsd.ini) if you want customizing them.
 
 ```sh
 sudo nano /usr/local/etc/vlmcsd.ini
 ```
-Edit some option (see man/vlmcsd.7 and comments in vlmcsd.ini) if you want customizing them.
 
 ## Starting
+Starting vlmcsd demon
+
 ```sh
 sudo service vlmcsd start
 ```
 
-* Checking
+## Checking
+Check the vlmcsd daemon is started
+
 ```sh
 vlmcs
 ```
@@ -46,10 +50,10 @@ Microsoft KMS Activation
 
 Determine the IP address of the KMS server on your local network.
 
-For example, let it be 192.168.1.1
+For example, let it be `192.168.1.1`
 
 ## Usage
-Start a Command Prompt as an `Administrator`.
+Start a Command Prompt as an `Administrator` on your Windows PC.
 
 * For Windows 11 Professional
 ```
