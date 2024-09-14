@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# PROVIDE: vlmcsd
+# REQUIRE: DAEMON
+# BEFORE: LOGIN
+# KEYWORD: shutdown
+
+# Define these vlmcsd_* variables in one of these files:
+#	/etc/rc.conf
+#	/etc/rc.conf.local
+#	/etc/rc.conf.d/vlmcsd
+#
+# DO NOT CHANGE THESE DEFAULT VALUES HERE
+
+vlmcsd_enable=${vlmcsd_enable-"NO"}
+
+. /etc/rc.subr
+
+name="vlmcsd"
+rcvar=vlmcsd_enable
+command="/usr/local/sbin/vlmcsd"
+
+load_rc_config $name
+
+start_cmd="echo \"Starting ${name}.\";	${command}"
+
+run_rc_command "$1"
