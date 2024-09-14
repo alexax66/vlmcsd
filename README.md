@@ -44,26 +44,30 @@ Sending activation request (KMS V6) 1 of 1  -> 03612-00206-554-823349-03-1045-17
 Microsoft KMS Activation
 ========
 
+Determine the IP address of the KMS server on your local network.
+
+For example, let it be 192.168.1.1
+
 ## Usage
 Start a Command Prompt as an `Administrator`.
 
-### Windows
+* For Windows 11 Professional
 ```
 slmgr.vbs -ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
 slmgr.vbs -skms 192.168.1.1
 slmgr.vbs -ato
 ```
 
-### Office
+* For Office Professional Plus 2016 
 ```
 cd C:\Program Files\Microsoft Office\Office16
-cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT
-cscript ospp.vbs /sethst:192.168.1.1.
+cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99
+cscript ospp.vbs /sethst:192.168.1.1
 cscript ospp.vbs /act
 ```
 
 ## GVLKs
-Authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-us/library/jj612867) and [Windows Server Activation Guide](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys).
+See authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-us/library/jj612867) and [Windows Server Activation Guide](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys) for Generic Volume License Keys (GVLKs) of other Microsoft product.
 
 ### Windows 11
 
