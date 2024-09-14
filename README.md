@@ -1,3 +1,44 @@
+Building and running on BSD systems
+========
+
+## Cloning and building
+```sh
+git clone https://github.com/alexax66/vlmcsd.git
+cd vlmcsd
+gmake
+```
+
+## Installing
+```sh
+sudo cp ./bin/vlmcsd /usr/local/sbin/vlmcsd
+sudo cp ./bin/vlmcs /usr/local/sbin/vlmcs
+
+sudo cp ./etc/vlmcsd.ini /usr/local/etc/vlmcsd.ini
+sudo cp ./etc/vlmcsd.cmd /usr/local/etc/vlmcsd.cmd
+sudo cp ./etc/vlmcsd /usr/local/etc/rc.d/vlmcsd
+```
+
+## Edit configuration options
+
+```sh
+sudo nano /usr/local/etc/vlmcsd.ini
+```
+Edit some option (see man/vlmcsd.8 and comments in vlmcsd.ini) if you want customizing them.
+
+## Starting
+```sh
+sudo service vlmcsd start
+```
+
+* Checking
+```sh
+vlmcs
+
+Connecting to 127.0.0.1:1688 ... successful
+Sending activation request (KMS V6) 1 of 1  -> 03612-00206-554-823349-03-1045-17763.0000-0382023 (3A1C049600B60076)
+
+```
+
 Microsoft KMS Activation
 ========
 
@@ -7,15 +48,15 @@ Start a Command Prompt as an `Administrator`.
 ### Windows
 ```
 slmgr.vbs -ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
-slmgr.vbs -skms kms.srv.crsoo.com
+slmgr.vbs -skms 192.168.1.1
 slmgr.vbs -ato
 ```
 
 ### Office
 ```
-cd C:\Program Files\Microsoft Office\Office15
+cd C:\Program Files\Microsoft Office\Office16
 cscript ospp.vbs /inpkey:YC7DK-G2NP3-2QQC3-J6H88-GVGXT
-cscript ospp.vbs /sethst:kms.srv.crsoo.com
+cscript ospp.vbs /sethst:192.168.1.1.
 cscript ospp.vbs /act
 ```
 
