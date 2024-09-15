@@ -24,7 +24,7 @@
    * Define your own version identifier here, e.g. '#define VERSION "my vlmcsd based on 1103"'
    */
 
-#define VERSION "kankerdev build"
+#define VERSION "private build"
 
 #endif // VERSION
 
