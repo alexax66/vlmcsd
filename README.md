@@ -16,6 +16,11 @@ sudo cp ./bin/vlmcs /usr/local/sbin/vlmcs
 sudo cp ./etc/vlmcsd.ini /usr/local/etc/vlmcsd.ini
 sudo cp ./etc/vlmcsd.cmd /usr/local/etc/vlmcsd.cmd
 sudo cp ./etc/vlmcsd /usr/local/etc/rc.d/vlmcsd
+
+sudo cp ./man/vlmcs.1 /usr/local/man/man1/vlmcs.1
+sudo cp ./man/vlmcsd.7 /usr/local/man/man7/vlmcs.7
+sudo cp ./man/vlmcsd.8 /usr/local/man/man8/vlmcs.8
+sudo cp ./man/vlmcsd.ini.5 /usr/local/man/man5/vlmcs.ini.5
 ```
 
 ## Edit configuration options
@@ -71,7 +76,7 @@ cscript ospp.vbs /act
 ```
 
 ## GVLKs
-See authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-us/library/jj612867) and [Windows Server Activation Guide](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys) for Generic Volume License Keys (GVLKs) of other Microsoft product.
+See authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-us/library/jj612867) and [Windows Server Activation Guide](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys) about Generic Volume License Keys (GVLKs) of other Microsoft product.
 
 ### Windows 11
 
