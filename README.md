@@ -66,7 +66,7 @@ cscript ospp.vbs /act
 ```
 
 ## GVLKs
-See authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-us/library/jj612867) and [Windows Server Activation Guide](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys) about Generic Volume License Keys (GVLKs) of other Microsoft product. Also You can see unofficial information on [massgrave.dev](https://massgrave.dev/online_kms)
+See authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/en-us/library/jj612867) and [Windows Server Activation Guide](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys) about Generic Volume License Keys (GVLKs) of other Microsoft product. You can also see unofficial information on [massgrave.dev](https://massgrave.dev/online_kms)
 
 ### Windows 11
 
