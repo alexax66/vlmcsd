@@ -10,18 +10,7 @@ gmake
 
 ## Installing
 ```sh
-sudo cp ./bin/vlmcsd /usr/local/sbin/vlmcsd
-sudo cp ./bin/vlmcs /usr/local/sbin/vlmcs
-
-sudo cp ./etc/vlmcsd.conf /etc/rc.conf.d/vlmcsd.conf
-sudo cp ./etc/vlmcsd.ini /usr/local/etc/vlmcsd.ini
-sudo cp ./etc/vlmcsd.kmd /usr/local/etc/vlmcsd.kmd
-sudo cp ./etc/vlmcsd /usr/local/etc/rc.d/vlmcsd
-
-sudo cp ./man/vlmcs.1 /usr/local/man/man1/vlmcs.1
-sudo cp ./man/vlmcsd.7 /usr/local/man/man7/vlmcs.7
-sudo cp ./man/vlmcsd.8 /usr/local/man/man8/vlmcs.8
-sudo cp ./man/vlmcsd.ini.5 /usr/local/man/man5/vlmcs.ini.5
+sudo cp ./install.sh
 ```
 
 ## Edit configuration options
