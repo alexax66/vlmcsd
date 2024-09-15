@@ -58,7 +58,7 @@ Determine the IP address of the KMS server on your local network.
 For example, let it be `192.168.1.1`
 
 ## Usage
-Start a Command Prompt as an `Administrator` on your Windows PC.
+Start a Command Prompt as an `Administrator` on your Windows PC and run the following commands:
 
 * For Windows 11 Professional
 ```
@@ -113,6 +113,11 @@ See authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/
 | Windows 10 Enterprise 2015 LTSB N | 2F77B-TNFGY-69QQF-B8YKP-D69TJ |
 | Windows 10 Enterprise 2016 LTSB   | DCPHK-NFMTC-H88MJ-PFHPY-QJ4BJ |
 | Windows 10 Enterprise 2016 LTSB N | QFFDN-GRT3P-VKWWX-X7T3R-8B639 |
+| Windows 10 Enterprise 2019 LTSB   | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
+| Windows 10 Enterprise 2019 LTSB N | M7XTQ-FN8P6-TTKYV-9D4CC-J462D |
+| Windows 10 Enterprise 2021 LTSB   | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
+| Windows 10 Enterprise 2021 LTSB N | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
+| Windows IoT Enterprise LTSC 2021  | KBN8V-HFGQ4-MGXVD-347P6-PDQGT |
 
 ### Windows 8 / 8.1
 
