@@ -10,7 +10,7 @@ gmake
 
 ## Installing
 ```sh
-sudo cp ./install.sh
+sudo ./install.sh
 ```
 
 ## Edit configuration options
