@@ -13,6 +13,7 @@ gmake
 sudo cp ./bin/vlmcsd /usr/local/sbin/vlmcsd
 sudo cp ./bin/vlmcs /usr/local/sbin/vlmcs
 
+sudo cp ./etc/vlmcsd.conf /etc/rc.conf.d/vlmcsd.conf
 sudo cp ./etc/vlmcsd.ini /usr/local/etc/vlmcsd.ini
 sudo cp ./etc/vlmcsd.cmd /usr/local/etc/vlmcsd.cmd
 sudo cp ./etc/vlmcsd /usr/local/etc/rc.d/vlmcsd
