@@ -14,7 +14,7 @@ sudo ./install.sh
 ```
 
 ## Edit configuration options
-Edit some option (see man/vlmcsd.ini.5 and comments in vlmcsd.ini) if you want customizing them.
+Edit some options (see man/vlmcsd.ini.5 and comments in vlmcsd.ini) if you want customizing them.
 
 ```sh
 sudo nano /usr/local/etc/vlmcsd.ini
