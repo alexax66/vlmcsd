@@ -110,7 +110,6 @@ See authoritative source on Microsoft's [TechNet](https://technet.microsoft.com/
 | Windows 10 Enterprise 2021 LTSC           | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
 | Windows 10 Enterprise 2021 LTSC N         | 92NFX-8DJQP-P6BBQ-THF9C-7CG2H |
 | Windows IoT Enterprise LTSC 2021          | KBN8V-HFGQ4-MGXVD-347P6-PDQGT |
-| Windows IoT Enterprise Subscription LTSC  | N979K-XWD77-YW3GB-HBGH6-D32MH |
 
 ### Windows 8 / 8.1
 
